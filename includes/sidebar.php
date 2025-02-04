@@ -9,14 +9,15 @@
         $admin_role = "Guest";
     }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="icon" href="images/icontitle.png" />
-    <link rel="stylesheet" type = "text/css" href= "/design/styles.css"/>
+    <link rel="icon" href="/ADMIN_DTR/images/icontitle.png" />
+    <link rel="stylesheet" type = "text/css" href= "/ADMIN_DTR/design/styles.css"/>
     <link
       rel="stylesheet"
       href="https://unpkg.com/boxicons@latest/css/boxicons.min.css"
@@ -28,7 +29,7 @@
     <div class="top">
       <div class="logo">
         <a href="index.php">
-          <img src="/images/phinmasvg.svg" alt="Upang logo" class="phinmalogo" />
+          <img src="/ADMIN_DTR/images/phinmasvg.svg" alt="Upang logo" class="phinmalogo" />
           <span class="title">HK Duty Tracker</span>
         </a>
       </div>
@@ -58,13 +59,13 @@
     <hr class="line_2" />
     <div class="profilelinks">
       <a href="#">
-        <img src="/images/profile-minus-1353-svgrepo-com.svg" alt="click to visit profile" class="profilelogo" />
+        <img src="/ADMIN_DTR/images/profile-minus-1353-svgrepo-com.svg" alt="click to visit profile" class="profilelogo" />
         <span class="profile_text">Profile</span>
       </a>
     </div>
     <div class="logout">
       <a href="#" onclick="show_logout()">
-        <img src="/images/logout-svgrepo-com.svg" alt="click to logout" class="logoutlogo" />
+        <img src="/ADMIN_DTR/images/logout-svgrepo-com.svg" alt="click to logout" class="logoutlogo" />
         <span class="logout_text">Logout</span>
       </a>
     </div>
@@ -77,6 +78,6 @@
         <button class="cancel_button" onclick="hide_logout()">No</button>
       </div>
     </div>
-    <script src="/script/script.js"></script>
+    <script src="/ADMIN_DTR/script/script.js"></script>
   </body>
 </html>

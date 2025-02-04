@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hk Duty Tracker</title>
-    <link rel="stylesheet" type= "text/css" href = "design/css_sidebar.css">
+    <link rel="icon" href="/ADMIN_DTR/images/icontitle.png" />
+    <link rel="stylesheet" type= "text/css" href = "/ADMIN_DTR/design/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://fonts.googleapis.com">

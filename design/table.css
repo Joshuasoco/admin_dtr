@@ -1,0 +1,221 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 99%;
+    margin-bottom: 20px;
+    margin-top: 50px;
+    min-width: 1000px;
+    padding: 0 auto;
+}
+  .title_db {
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
+    font-size: 28px;
+    color: black;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  .subtitle {
+    margin-top: 10px;
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    color: hsl(0, 0%, 50%);
+  }
+  .all-students {
+    text-align: right;
+    margin-right: 10px;
+    margin-top: 50px;
+    font-size: 20px;
+    padding-right: 70px;
+    font-weight: 400;
+    color: #000000;
+  }
+  .search {
+    display: flex;
+    align-items: center;
+    gap: 10px; 
+    padding-left: 20px; 
+    position: relative;
+
+}
+  .search span {
+    position: absolute;
+    left: 30px;
+    top: 56%;
+    transform: translateY(-50%);
+    color: #ccc;
+    font-size: 18px;
+    pointer-events: none;
+  }
+  
+  .search input {
+    width: 257px;
+    padding: 10px 12px 10px 35px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  
+  .search input:hover {
+    border: 1px solid #888;
+  }
+  
+  .search input:focus {
+    border: 1px solid #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
+  
+  .search input:focus {
+    border: 1px solid #007bff;
+    outline: none;
+  }
+  .add_new {
+    font-family: "Roboto", sans-serif;
+    text-decoration: none;
+    color: #000000;
+    background-color: #336713;
+    color: white;
+    padding: 10px 12px;
+    font-size: 13px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .add_new:hover {
+    background-color: #45a049;
+    color: #ffffff;
+    transition: all 0.3s ease;
+  }
+  .search button {
+    padding: 10px 12px;
+    font-size: 13px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .search button.edit {
+    font-family: "Roboto", sans-serif;
+    color: black;
+    background-color: #d9d9d9;
+    transition: all 0.5s ease;
+  }
+  .search button.edit.delete-mode {
+    background-color: #e72e2e;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 16px;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+  .search button.edit.delete-mode:hover {
+    background-color: #d42828;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+  }
+  .search button.edit.delete-mode i {
+    margin: 0;
+    position: static;
+    padding: 0;
+    font-size: 16px;
+    margin-left: 15px !important;
+  }
+  .search button.edit:hover {
+    background-color: #adadad;
+  }
+  .search button.edit i {
+    margin-right: 8px;
+    position: relative;
+    top: 1.2px;
+    right: 3px;
+  }
+/* table */
+.table_content {
+  max-height: calc(86vh - 120px);
+  overflow-x: auto;
+  overflow-y: auto;
+  width: 100%;
+  position: relative;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+
+table {
+  font-family: "Varela Round", sans-serif;
+  white-space: nowrap;
+  font-size: 14px;
+  width: 100%;
+  table-layout: fixed;
+  min-width: 1000px;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+thead th:first-child {
+  border-top-left-radius: 10px;
+}
+
+thead th:last-child {
+  border-top-right-radius: 10px;
+}
+
+tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 10px;
+}
+
+tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 10px;
+}
+
+thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: #f2f2f2;
+  color: rgba(0, 0, 0, 1);
+  border-bottom: 2px solid #c5bfbf;
+  border-top: 1px solid #e0e0e0;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #f8f7f7;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #ffffff;
+}
+
+tbody tr:hover {
+  background-color: hsl(136, 75%, 85%);
+}
+
+th,
+td {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  border-left: none;
+  border-right: none;
+  padding: 10px 20px;
+  word-break: break-all;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+tbody {
+  overflow-y: auto;
+}
