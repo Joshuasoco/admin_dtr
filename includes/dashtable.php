@@ -10,6 +10,9 @@
     if($conn->connect_error){
         die("Connection failed: " . $conn->connect_error);
     }
+    function generateNoResultsHtml() {
+        return "<tr><td colspan='6' style='text-align:center;'>No records found</td></tr>";
+    }
 
     $sql = "SELECT id, name, hk_type, course_code, hk_duty_status, rendered_hours FROM students";
     $result = $conn->query($sql);
@@ -34,9 +37,7 @@
                 while ($row = $result->fetch_assoc()) {
                     echo "<tr>";
                     echo "<td>";
-                    echo "<input type='checkbox' class='student-checkbox' 
-                          style='display: none; margin-right: 10px;' data-id='" 
-                          . $row['id'] . "'>";
+                    echo "<input type='checkbox' class='student-checkbox' data-id='" . $row['id'] . "'>";
                     echo "<span>" . $row['id'] . "</span>";
                     echo "</td>";
                     echo "<td>" . $row['name'] . "</td>";

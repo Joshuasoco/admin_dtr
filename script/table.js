@@ -145,37 +145,55 @@ function show_delete_popup() {
 }
 
 function hide_delete_popup() {
+  // Always close the popup regardless of deletion
   document.getElementById("delete_warning").style.display = "none";
-
-  const allStudentsCheckbox = document.getElementById("all_students_checkbox");
-  allStudentsCheckbox.checked = false;
-
+  
+  // Reset checkboxes
   const checkboxes = document.querySelectorAll(".student-checkbox");
-  const rows = document.querySelectorAll("tr");
-
-  checkboxes.forEach((checkbox, index) => {
-    checkbox.checked = false;
-    if (rows[index + 1]) {
-      // Skip the header row (index 0)
-      rows[index + 1].classList.remove("checked");
-    }
-  });
+  checkboxes.forEach(checkbox => checkbox.checked = false);
+  
+  // Reset row highlighting
+  document.querySelectorAll("tr.checked").forEach(row => row.classList.remove("checked"));
+  
+  // Reset "All students" checkbox
+  if (allStudentsCheckbox) {
+    allStudentsCheckbox.checked = false;
+  }
 }
 
 function delete_selected() {
-  const selectedCheckboxes = document.querySelectorAll(
-    ".student-checkbox:checked"
-  );
+  const selectedCheckboxes = document.querySelectorAll(".student-checkbox:checked");
+  
   if (selectedCheckboxes.length === 0) {
     alert("No student selected for deletion.");
     return;
   }
 
-  // Hide popup and simulate deletion
+  // Always hide the popup when deletion is confirmed
   hide_delete_popup();
 
-  selectedCheckboxes.forEach((checkbox) => {
-    checkbox.closest("tr").remove(); // Remove the row
+  // Gather selected student IDs
+  const studentIds = Array.from(selectedCheckboxes).map(checkbox => checkbox.dataset.id);
+
+
+  // Send delete request via AJAX
+  fetch("/ADMIN_DTR/backend/delete.php", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: `ids=${encodeURIComponent(JSON.stringify(studentIds))}`
+  })
+  .then(response => response.text())
+  .then(data => {
+    if (data.trim() === "success") {
+      // Remove deleted rows from UI
+      selectedCheckboxes.forEach(checkbox => checkbox.closest("tr").remove());
+      alert("Selected students deleted successfully!");
+    } else {
+      alert("Error deleting students. Please try again.");
+    }
+  })
+  .catch(error => {
+    console.error("Error:", error);
+    alert("An error occurred while deleting students.");
   });
-  alert("Selected students deleted.");
 }
