@@ -1,4 +1,11 @@
+
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}// Reset search state when page loads
+unset($_SESSION['search_active']);
+unset($_SESSION['search_query']);
+// ... rest of your existing code ...
     $host = 'localhost';
     $root = 'root';
     $password = '';
@@ -6,6 +13,7 @@
 
     $conn = mysqli_connect($host, $root, $password, $db);
 
+    
     //check connection
     if($conn->connect_error){
         die("Connection failed: " . $conn->connect_error);
@@ -23,7 +31,7 @@
     <table class="content-table">
         <thead>
             <tr>              
-                <th style="width: 300px">Id</th>
+                <th style="width: 300px">ID</th>
                 <th>Name</th>
                 <th style="width: 100px">HK Type</th>
                 <th>Course code</th>
@@ -53,7 +61,7 @@
                     echo "</tr>";
                 }
             } else {
-                echo generateNoResultsHtml("");
+                echo generateNoResultsHtml();
             }
             ?>
             

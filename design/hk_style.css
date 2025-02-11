@@ -1,0 +1,24 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.main{
+    margin-left: 260px;
+    padding: 20px;
+}
+.title_hk{
+    font-family: 'Roboto', sans-serif;
+    font-size: 28px;
+    color: black;
+    font-weight: bold;
+    margin-top: 10px;
+}
+.subtitle_hk {
+    margin-top: 10px;
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    color: hsl(0, 0%, 50%);
+  }
