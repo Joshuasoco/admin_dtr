@@ -2,10 +2,10 @@
 <?php
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
-}// Reset search state when page loads
+}
 unset($_SESSION['search_active']);
 unset($_SESSION['search_query']);
-// ... rest of your existing code ...
+
     $host = 'localhost';
     $root = 'root';
     $password = '';
@@ -32,11 +32,11 @@ unset($_SESSION['search_query']);
         <thead>
             <tr>              
                 <th style="width: 300px">ID</th>
-                <th>Name</th>
-                <th style="width: 100px">HK Type</th>
-                <th>Course code</th>
-                <th>HK duty status</th>
-                <th>Rendered status</th>
+                <th>NAME</th>
+                <th style="width: 100px">HK TYPE</th>
+                <th>COURSE CODE</th>
+                <th>HK DUTY STATUS</th>
+                <th>RENDERED STATUS</th>
             </tr>
         </thead>
         <tbody id="tbody">
@@ -44,19 +44,19 @@ unset($_SESSION['search_query']);
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
                     echo "<tr>";
-                    echo "<td>";
-                    echo "<input type='checkbox' class='student-checkbox' data-id='" . $row['id'] . "'>";
-                    echo "<span>" . $row['id'] . "</span>";
-                    echo "</td>";
-                    echo "<td>" . $row['name'] . "</td>";
-                    echo "<td>" . $row['hk_type'] . "</td>";
-                    echo "<td>" . $row['course_code'] . "</td>";
-                    echo "<td>" . $row['hk_duty_status'] . "</td>";
-                    echo "<td style='display: flex; align-items: center; gap: 8px; position: relative;'>";
-                    echo "<span class='rendered-hours'>" . $row['rendered_hours'] . "</span>";
-                    echo "<button class='hours-button' data-id='" . $row['id'] . "'>
-                            <img src='/ADMIN_DTR/images/pen.svg' alt='edit' class='hours-icon'>
-                          </button>";
+                        echo "<td>";
+                        echo "<input type='checkbox' class='student-checkbox' data-id='" . $row['id'] . "'>";
+                        echo "<span>" . $row['id'] . "</span>";
+                        echo "</td>";
+                        echo "<td>" . $row['name'] . "</td>";
+                        echo "<td>" . $row['hk_type'] . "</td>";
+                        echo "<td>" . $row['course_code'] . "</td>";
+                        echo "<td>" . $row['hk_duty_status'] . "</td>";
+                        echo "<td style='display: flex; align-items: center; gap: 8px; position: relative;'>";
+                        echo "<span class='rendered-hours'>" . $row['rendered_hours'] . "</span>";
+                        echo "<button class='hours-button' data-id='" . $row['id'] . "'>
+                              <img src='/ADMIN_DTR/images/pen.svg' alt='edit' class='hours-icon'>
+                              </button>";
                     echo "</td>";
                     echo "</tr>";
                 }

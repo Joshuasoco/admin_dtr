@@ -1,24 +1,285 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-.main{
-    margin-left: 260px;
-    padding: 20px;
+.main {
+  margin-left: 260px;
+  padding: 20px;
 }
-.title_hk{
-    font-family: 'Roboto', sans-serif;
-    font-size: 28px;
-    color: black;
-    font-weight: bold;
-    margin-top: 10px;
+.title_hk {
+  font-family: "Roboto", sans-serif;
+  font-size: 28px;
+  color: black;
+  font-weight: bold;
+  margin-top: 10px;
 }
 .subtitle_hk {
-    margin-top: 10px;
-    font-family: "Roboto", sans-serif;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 20px;
-    color: hsl(0, 0%, 50%);
-  }
+  margin-top: 10px;
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  color: hsl(0, 0%, 50%);
+}
+.student_id_wrapper {
+  display: flex;
+  gap: 46px;
+  flex-wrap: wrap;
+}
+
+.student_id_container {
+  width: fit-content;
+  min-width: 220px;
+  max-width: 300px;
+  height: auto;
+  min-height: 100px;
+  margin-top: 40px;
+  border-radius: 8px;
+  font-family: Roboto, sans-serif;
+  font-weight: 400;
+}
+
+.student-id-content {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 1px rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  padding: 31px 27px;
+  min-width: 290px;
+  max-width: 300px;
+  width: 100%;
+}
+
+.student-id-icon {
+  aspect-ratio: 1.24;
+  object-fit: contain;
+  object-position: center;
+  width: 50px;
+  align-self: flex-start;
+  height: auto;
+}
+.student-id-content img[src*="details.svg"] {
+  width: 39px;
+  height: auto;
+  margin-top: 3px;
+}
+.student-img-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.student-img-wrapper img {
+  width: 49px;
+  height: auto;
+}
+.student-id-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.student-id-label {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.59);
+  font-size: 12px;
+  align-self: flex-start;
+}
+
+.student-id-number {
+  text-wrap: nowrap;
+  color: #000;
+  font-size: 16px;
+  margin-top: 5px;
+}
+/* table container */
+.table_container {
+  max-height: calc(86vh - 120px);
+  overflow-x: auto;
+  overflow-y: auto;
+  width: 100%;
+  position: relative;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+
+/* table styling */
+table {
+  font-family: "Varela Round", sans-serif;
+  white-space: nowrap;
+  font-size: 14px;
+  width: 100%;
+  table-layout: fixed;
+  min-width: 1000px;
+  border-collapse: collapse;
+  border-spacing: 0;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+thead th:first-child {
+  border-top-left-radius: 10px;
+}
+thead th:last-child {
+  border-top-right-radius: 10px;
+}
+tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 10px;
+}
+tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 10px;
+}
+thead {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background-color: #ffffff;
+}
+thead::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 100%;
+  height: 10px;
+  pointer-events: none;
+  z-index: -1;
+}
+
+thead th {
+  text-align: left;
+  letter-spacing: 1px;
+  color: rgba(0, 0, 0, 1);
+  padding: 12px 16px;
+  background-color: #ffffff;
+  font-family: "Roboto", serif;
+  font-weight: 600;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+thead th:last-child {
+  text-align: right;
+  padding-right: 24px;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f8f7f7;
+}
+
+tbody tr:hover {
+  background-color: hsl(136, 75%, 85%);
+}
+
+th {
+  position: relative;
+  font-family: "Roboto", serif;
+  font-weight: 600;
+  text-align: left;
+  padding: 12px 16px; /* Ensure sufficient padding for alignment */
+}
+td {
+  position: relative;
+  font-size: 15px;
+  padding: 12px 16px;
+  word-break: break-word;
+  text-align: left;
+  font-family: "Roboto", serif;
+  font-weight: normal;
+  color: rgba(0, 0, 0, 1);
+}
+.approval-header {
+  margin-left: 60px;
+  text-align: center;
+  vertical-align: middle;
+  white-space: normal;
+  min-width: 120px;
+  word-break: break-word; /* Ensure long words break properly */
+}
+.three-dot {
+  position: absolute;
+  right: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  width: 20px;
+  height: auto;
+}
+.student-status {
+  background-color: #fff3cd;
+  text-align: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #856404;
+  display: inline-block;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  line-height: 1.6;
+  margin-left: 50px;
+  margin-top: 5px;
+  vertical-align: middle;
+  border: 1px solid #ffeeba;
+}
+
+.approve,
+.decline {
+  padding: 5px 13px;
+  border-radius: 12px;
+  font-weight: bold;
+  text-align: center;
+  width: auto;
+  display: inline-block;
+}
+
+.approve {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.decline {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+/*modal form*/
+
+.form-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.form-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 400px;
+  position: relative;
+}
+
+.buttons {
+  margin-top: 15px;
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}

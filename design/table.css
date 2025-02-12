@@ -46,8 +46,8 @@
   background-color: #ffffff;
   padding: 4px 8px;
   border-radius: 12px;
-  display: inline-block; /* Ensures it doesn’t stretch */
-  margin-left: -10px; /* Pushes it to the left */
+  display: inline-block; 
+  margin-left: -10px;
 }
 .search {
   display: flex;
@@ -163,28 +163,8 @@
   top: 1.2px;
   right: 3px;
 }
-/* table container */
-.table_content {
-  max-height: calc(86vh - 120px);
-  overflow-x: auto;
-  overflow-y: auto;
-  width: 100%;
-  position: relative;
-  padding-bottom: 20px;
-  margin-bottom: 20px;
-}
 
-.table_content {
-  max-height: calc(86vh - 120px);
-  overflow-x: auto;
-  overflow-y: auto;
-  width: 100%;
-  position: relative;
-  padding-bottom: 20px;
-  margin-bottom: 20px;
-}
-
-/* Table styling */
+/* table styling */
 table {
   font-family: "Varela Round", sans-serif;
   white-space: nowrap;
@@ -196,7 +176,7 @@ table {
   border-spacing: 0;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 10px;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   overflow: hidden;
 }
 
@@ -231,11 +211,13 @@ thead::after {
 }
 
 thead th {
+  word-break: break-word;
+  text-align: left;
   letter-spacing: 2px;
   color: rgba(0, 0, 0, 1);
   border-top: 1px solid #e0e0e0;
   padding: 18px 20px;
-  background-color: #ffffff; /* Add your desired color */
+  background-color: #ffffff; 
   font-family: "Roboto", serif;
   font-weight: 600;
 }
@@ -252,15 +234,6 @@ tbody tr:hover {
   background-color: hsl(136, 75%, 85%);
 }
 
-th,
-td {
-  border-left: none;
-  border-right: none;
-  padding: 10px 20px;
-  word-break: break-word;
-  text-align: left;
-}
-
 th {
   font-family: "Roboto", serif;
   font-weight: 600;
@@ -268,9 +241,13 @@ th {
 
 td {
   position: relative;
+  font-size: 16px;
+  padding: 12px 20px;
+  word-break: break-word;
+  text-align: left;
 }
 
-/* No results styling */
+/* no results styling */
 tr.no-results:hover {
   background-color: transparent !important;
 }
@@ -281,6 +258,10 @@ tr.no-results:hover td {
 
 tr.no-results td {
   background-color: transparent !important;
+}
+.rendered-hours{
+  font-style: normal;
+  font-size: 18px;
 }
 
 /*checkbox*/
