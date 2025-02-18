@@ -1,18 +1,45 @@
+function pass() {
+  let passwordInput = document.getElementById("password");
+  let passIcon = document.getElementById("pass-icon");
 
-        // Show logout popup
-        function show_logout() {
-            console.log("Show logout popup");
-            document.getElementById("logout_warning").style.display = "block";
-        }
+  if (passwordInput.type === "password") {
+    passwordInput.type = "text";
+    passIcon.src = "../images/eye-open-svgrepo-com.svg";
+  } else {
+    passwordInput.type = "password";
+    passIcon.src = "../images/eye-closed-svgrepo-com.svg";
+  }
+}
 
-        // Hide logout popup
-        function hide_logout() {
-            document.getElementById("logout_warning").style.display = "none";
-        }
+const tosmodal = document.getElementById("tos_modal");
+const openbutton = document.getElementById("tos_button");
 
-        // Perform logout action
-        function logout() {
-            document.getElementById("logout_warning").style.display = "none";
-            console.log("Logout");
-            window.location.href = "#"; // Change this to the actual login page URL
-        } 
+openbutton.addEventListener("click", () => {
+    tosmodal.style.display = "flex"; // Corrected modal reference
+});
+
+window.addEventListener("click", (e) => {
+    if (e.target === tosmodal) {
+        tosmodal.style.display = "none"; // Corrected modal reference
+    }
+});
+
+function show_logout() {
+  console.log("Show logout popup");
+  document.getElementById("logout_warning").style.display = "block";
+}
+
+function hide_logout() {
+  document.getElementById("logout_warning").style.display = "none";
+}
+
+function logout() {
+  console.log("logout");
+  fetch("/ADMIN_DTR/includes/logout.php")
+    .then((response) => {
+      if (response.ok) {
+        window.location.href = "/ADMIN_DTR/includes/login.php";
+      }
+    })
+    .catch((error) => console.error("logout failed try again", error));
+}

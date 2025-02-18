@@ -26,3 +26,13 @@ document.querySelectorAll('.three-dot').forEach(icon => {
 document.getElementById('form_popup').addEventListener('click', function(e) {
     if(e.target === this) closeModal();
 });
+document.addEventListener('DOMContentLoaded', function() {
+    const studentData = JSON.parse(sessionStorage.getItem('studentData'));
+    if (studentData) {
+        document.querySelector('.student-id-number').textContent = studentData.id;
+        document.querySelector('.student-name').textContent = studentData.name;
+        document.querySelector('.student-course').textContent = studentData.course_code;
+        document.querySelector('.student-schedule').textContent = `${studentData.schedule_days}`;
+        sessionStorage.removeItem('studentData');
+    }
+});

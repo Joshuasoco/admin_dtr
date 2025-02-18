@@ -1,5 +1,4 @@
 <?php
-    session_start();
 
     if(isset($_SESSION['admin_name']) && isset ($_SESSION['admin_role'])){
         $admin_name = $_SESSION['admin_name'];
@@ -25,6 +24,9 @@
 </head>
 <body>
 <div class="wrapper">
+  <button class="burger-menu" id="burger_menu" onclick="toggleSidebar()">
+    <i class="bx bx-menu"></i>
+  </button>
   <div class="sidebar">
     <div class="top">
       <div class="logo">

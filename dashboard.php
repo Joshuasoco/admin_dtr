@@ -1,6 +1,9 @@
 <?php
+session_start();
+
     include 'backend/connection.php';  
-    include 'backend/fetch_students.php';  
+    include 'backend/fetch_students.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

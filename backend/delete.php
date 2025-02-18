@@ -1,29 +1,45 @@
 <?php
-session_start();
 include 'connection.php';
-include '../backend/reset.php';
 
-if (isset($_POST['ids'])) {
-    $ids = json_decode($_POST['ids'], true);
-
-    if (!empty($ids)) {
-        $id_placeholders = implode(",", array_fill(0, count($ids), "?"));
-        $sql = "DELETE FROM students WHERE id IN ($id_placeholders)";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param(str_repeat("i", count($ids)), ...$ids);
-
-        if ($stmt->execute()) {
-            include 'reset.php'; //  reset.php instead of repeating session unset
-            echo "success";
-        } else {
-            echo "error deletion";
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['ids'])) {
+    $ids = json_decode($_POST['ids']);// Decode JSON array of IDs
+    
+    if ($ids && is_array($ids)) {
+        try {
+            // Start transaction
+            $conn->begin_transaction();
+            
+            // Prepare the delete statement
+            $stmt = $conn->prepare("DELETE FROM students WHERE id = ?");
+            
+            $success = true;
+            foreach ($ids as $id) {
+                $stmt->bind_param("i", $id);
+                if (!$stmt->execute()) {
+                    $success = false;
+                    break;
+                }
+            }
+            
+            if ($success) {
+                $conn->commit();
+                echo "success";
+            } else {
+                $conn->rollback();
+                echo "error: " . $conn->error;
+            }
+            
+        } catch (Exception $e){
+            $conn->rollback();
+            echo "error: " . $e->getMessage();
         }
+        
         $stmt->close();
     } else {
-        echo "no id";
+        echo "error: Invalid ID format";
     }
 } else {
-    echo "invalid_request";
+    echo "error: No IDs received";
 }
 
 $conn->close();

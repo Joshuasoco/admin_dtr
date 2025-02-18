@@ -1,8 +1,32 @@
 <?php
+session_start();
+
+if (!isset($_SESSION['logged_in']) || !$_SESSION['logged_in']) {
+    header("Location: /ADMIN_DTR/includes/login.php");
+    exit(); 
+}
+
+include 'backend/connection.php';
 
 $student_id = $_GET['id'] ?? null;
 if ($student_id) {
-    // Fetch student data using $student_id
+    
+    $stmt = $conn->prepare("
+    SELECT *, 
+    schedule_days AS schedule 
+    FROM students 
+    WHERE id = ?
+    ");
+    $stmt->bind_param("i", $student_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows === 1) {
+        $student_data = $result->fetch_assoc(); 
+    } else {
+        header("Location: /ADMIN_DTR/dashboard.php");
+        exit;
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -22,8 +46,10 @@ if ($student_id) {
         <h2 class="subtitle_hk">Student status</h2>
 
         <div class="student_id_wrapper">
-            
-            <!-- Student ID -->
+        <?php if(isset($error)): ?>
+                <div class="error"><?php echo $error; ?></div>
+            <?php elseif(isset($student_data)): ?>
+        <!-- student ID container -->
             <div class="student_id_container">
                 <div class="student-id-content">
                     <div class="student-img-wrapper">         
@@ -33,12 +59,14 @@ if ($student_id) {
                     </div>
                     <div class="student-id-info">
                         <div class="student-id-label">Student ID</div>
-                        <div class="student-id-number">03-2324-12345</div>
+                            <div class="student-id-number">
+                                <?php echo htmlspecialchars($student_data['id'])?>
+                            </div>
                     </div>
                 </div>
             </div>
+        <!-- student name container -->
 
-            <!-- Student Name -->
             <div class="student_id_container">
                 <div class="student-id-content">
                     <div class="student-img-wrapper">
@@ -49,12 +77,14 @@ if ($student_id) {
                     </div>
                     <div class="student-id-info">
                         <div class="student-id-label">Student Name</div>
-                        <div class="student-id-number">Josh Co Po</div>
+                        <div class="student-name">
+                            <?php echo htmlspecialchars($student_data['name'])?>
+                        </div>
                     </div>
                 </div>
             </div>
+        <!-- student sched container -->
 
-            <!-- Schedule -->
             <div class="student_id_container">
                 <div class="student-id-content">
                     <div class="student-img-wrapper">
@@ -65,12 +95,14 @@ if ($student_id) {
                     </div>
                     <div class="student-id-info">
                         <div class="student-id-label">Schedule</div>
-                        <div class="student-id-number">Monday & Tuesday</div>
+                            <div class="student-schedule">
+                                <?php echo htmlspecialchars($student_data['schedule'])?>
+                            </div>
                     </div>
                 </div>
             </div>
+        <!-- student course container -->
 
-            <!-- Course -->
             <div class="student_id_container">
                 <div class="student-id-content">
                     <div class="student-img-wrapper">
@@ -81,10 +113,14 @@ if ($student_id) {
                     </div>
                     <div class="student-id-info">
                         <div class="student-id-label">Course</div>
-                        <div class="student-id-number">BSIT</div>
+                            <div class="student-course">
+                            <?php echo htmlspecialchars($student_data['course_code'])?>                            </div>
                     </div>
                 </div>
             </div>
+            <?php else: ?>
+                <div class="notice">Select a Student</div>
+            <?php endif;?>
             <?php include 'includes/hourstable.php';?>
         </div>
     </div>
