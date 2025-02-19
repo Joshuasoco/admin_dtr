@@ -8,16 +8,13 @@ function generateNoResultsHtml($searchQuery) {
             </div>
             </td>
             </tr>
-    <tr class="no-results">
-        <td colspan="6" style="text-align: center;">
-            <div class="img_no_result" style="display: block; text-align: center;">
+    <tr class = "no-results">
+        <td colspan="6" style="align-items: center;
+         text-align:center;
+         background-color: white;"
+         >
                 <img src="/ADMIN_DTR/images/Searchnotfound.png" 
-                     alt="No results found" 
-                     style="width: 30%; 
-                            height: 30%; 
-                            margin: 30px auto; 
-                            display: block;">
-            </div>
+                     alt="No results found" >
         </td>
     </tr>';
 }

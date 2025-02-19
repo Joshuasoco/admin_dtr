@@ -261,21 +261,43 @@ td {
 
 /* no results styling */
 tr.no-results:hover {
-  background-color: transparent !important;
-}
-
-tr.no-results:hover td {
-  background-color: transparent !important;
+  background-color: white ;
 }
 
 tr.no-results td {
-  background-color: transparent !important;
-}
-.rendered-hours {
-  font-style: normal;
-  font-size: 18px;
+  padding: 30px 0; 
+  text-align: center;
+  vertical-align: middle;
 }
 
+.no_results {
+  margin: 20px 0;
+  font-family: "Varela Round", sans-serif;
+  font-size: 20px;
+  color: #333;
+}
+
+
+tr.no-results img {
+  width: 15%; 
+  max-width: 150px; 
+  min-width: 220px; 
+  height: auto;
+  margin: 20px auto;
+  display: block;
+  opacity: 0.8; 
+}
+
+
+tr.no-results td[colspan="6"] {
+  padding: 30px 0; 
+}
+
+.rendered-hours {
+  font-style: normal;
+  color: #155724;
+  font-size: 18px;
+}
 /*checkbox*/
 .allstudent_checkbox {
   cursor: pointer;
