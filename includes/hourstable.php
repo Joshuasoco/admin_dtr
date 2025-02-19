@@ -6,8 +6,8 @@
                 <th>TIME IN</th>
                 <th>TIME OUT</th>
                 <th>REMARKS</th>
-                <th>NO. OF HOURS</th> <!-- New Column -->
-                <th class="approval-header">APPROVAL</th> <!-- Fixed Approval Header -->
+                <th>NO. OF HOURS</th> 
+                <th class="approval-header">APPROVAL</th>
                 <th>ACTION</th>
             </tr>
         </thead>

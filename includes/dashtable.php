@@ -54,7 +54,7 @@ unset($_SESSION['search_query']);
                         echo "<td style='display: flex; align-items: center; gap: 8px; position: relative;'>";
                         echo "<span class='rendered-hours'>" . $row['rendered_hours'] . "</span>";
                         echo "<button class='hours-button' data-id='" . $row['id'] . "'>";
-                        // ...existing code...
+                        
                     echo "</td>";
                     echo "</tr>";
                 }

@@ -65,7 +65,7 @@ body {
 }
 
 .right {
-  flex: 1; /* Keep right section smaller */
+  flex: 1; 
   padding: 50px;
   display: flex;
   flex-direction: column;
@@ -92,20 +92,20 @@ form label {
   display: block;
   text-align: left;
   font-weight: normal;
-  position: relative; /* Add this to prevent shifting */
+  position: relative;
 }
 form input:focus {
-  border-color: #007bff; /* Changed from #2ecc71 to blue */
-  background-color: #f0f7ff; /* Changed from #eaf8e2 to light blue */
+  border-color: #007bff; 
+  background-color: #f0f7ff; 
   outline: none;
 }
 
 input,
 .password {
   width: 100%;
-  height: 45px; /* Ensure same height */
-  border: 1px solid #ccc; /* Same border for both */
-  border-radius: 5px; /* Optional, for rounded corners */
+  height: 45px; 
+  border: 1px solid #ccc;
+  border-radius: 5px;
   padding: 10px;
   font-size: 16px;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
@@ -128,13 +128,13 @@ input:focus {
   display: flex;
   align-items: center;
   position: relative;
-  padding-right: 40px; /* Space for the icon */
+  padding-right: 40px;
 }
 .password input {
-  border: none; /* Remove border since parent has it */
+  border: none;
   flex: 1;
   padding: 0;
-  height: 100%; /* Ensures alignment */
+  height: 100%; 
   background: transparent;
 }
 
@@ -235,6 +235,7 @@ p {
   margin-bottom: 40px;
   text-align: center;
 }
+/*error style*/
 .error-message {
   background-color: #f8d7da;
   color: #721c24;

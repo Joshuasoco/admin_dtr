@@ -3,6 +3,7 @@
   padding: 0;
   box-sizing: border-box;
 }
+/*color*/
 :root {
   --primary: #2c3e50;
   --secondary: #7f8c8d;
@@ -211,7 +212,7 @@ th {
   font-family: "Roboto", serif;
   font-weight: 600;
   text-align: left;
-  padding: 12px 16px; /* Ensure sufficient padding for alignment */
+  padding: 12px 16px;
 }
 td {
   position: relative;
@@ -223,6 +224,7 @@ td {
   font-weight: normal;
   color: rgba(0, 0, 0, 1);
 }
+/* approval status*/
 .approval-header {
   margin-left: 60px;
   text-align: center;

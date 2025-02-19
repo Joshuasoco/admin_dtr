@@ -16,23 +16,34 @@ const openbutton = document.getElementById("tos_button");
 const accept = document.getElementById("accept");
 const decline = document.getElementById("decline");
 
-accept.addEventListener("click", ()=>{
-  tosmodal.style.display ="none";
-  alert("accepted Terms of Services");
-});
-decline.addEventListener("click", ()=>{
-  tosmodal.style.display = "none";
-});
+/*wrap to prevent errors 
+js won’t try to add event listeners to null elements.*/
+if (accept) {
+  accept.addEventListener("click", () => {
+    tosmodal.style.display = "none";
+    alert("Accepted Terms of Service");
+  });
+}
 
-openbutton.addEventListener("click", () => {
-    tosmodal.style.display = "flex"; // Corrected modal reference
-});
+if (decline) {
+  decline.addEventListener("click", () => {
+    tosmodal.style.display = "none";
+  });
+}
 
-window.addEventListener("click", (e) => {
+if (openbutton) {
+  openbutton.addEventListener("click", () => {
+    if (tosmodal) tosmodal.style.display = "flex"; 
+  });
+}
+
+if (tosmodal) {
+  window.addEventListener("click", (e) => {
     if (e.target === tosmodal) {
-        tosmodal.style.display = "none"; // Corrected modal reference
+      tosmodal.style.display = "none"; 
     }
-});
+  });
+}
 
 function show_logout() {
   console.log("Show logout popup");
@@ -42,7 +53,7 @@ function show_logout() {
 function hide_logout() {
   document.getElementById("logout_warning").style.display = "none";
 }
-
+/*logout error handler*/
 function logout() {
   console.log("logout");
   fetch("/ADMIN_DTR/includes/logout.php")
@@ -51,5 +62,5 @@ function logout() {
         window.location.href = "/ADMIN_DTR/includes/login.php";
       }
     })
-    .catch((error) => console.error("logout failed try again", error));
+    .catch((error) => console.error("logout failed", error));
 }

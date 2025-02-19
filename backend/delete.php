@@ -2,14 +2,14 @@
 include 'connection.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['ids'])) {
-    $ids = json_decode($_POST['ids']);// Decode JSON array of IDs
+    $ids = json_decode($_POST['ids']);
     
     if ($ids && is_array($ids)) {
         try {
-            // Start transaction
+
             $conn->begin_transaction();
             
-            // Prepare the delete statement
+
             $stmt = $conn->prepare("DELETE FROM students WHERE id = ?");
             
             $success = true;
