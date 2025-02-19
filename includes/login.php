@@ -66,7 +66,6 @@ unset($_SESSION['login_error']);
     </div>
     <div class="tos-modal" id="tos_modal">
         <div class="tos-content">
-
             <?php include '../includes/ToS.php';?>
         </div>
     </div>

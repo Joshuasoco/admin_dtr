@@ -119,7 +119,15 @@ if ($student_id) {
                 </div>
             </div>
             <?php else: ?>
-                <div class="notice">Select a Student</div>
+                <div class="select-container">
+                    <img src="/ADMIN_DTR/images/hk_nofound.jpg" alt="Selected student">
+                    <div class="notice">Select a student..</div>
+                    <p>No student selected yet.</p>
+                    <button type="button" onclick="window.location.href
+                    ='dashboard.php'">
+                        Go to Dashboard
+                    </button>
+                </div>
             <?php endif;?>
             <?php include 'includes/hourstable.php';?>
         </div>

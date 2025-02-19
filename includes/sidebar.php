@@ -1,5 +1,4 @@
 <?php
-
     if(isset($_SESSION['admin_name']) && isset ($_SESSION['admin_role'])){
         $admin_name = $_SESSION['admin_name'];
         $admin_role = $_SESSION['admin_role'];

@@ -87,11 +87,11 @@ form {
 form label {
   font-family: "Roboto", serif;
   font-size: 16px;
-  color: #333;
+  color: #000000;
   margin-bottom: 8px;
   display: block;
   text-align: left;
-  font-weight: 500;
+  font-weight: normal;
   position: relative; /* Add this to prevent shifting */
 }
 form input:focus {
@@ -227,23 +227,6 @@ a:hover {
   text-decoration: none;
   background-color: #e6f7ff;
 }
-
-.terms {
-  font-size: 12px;
-  color: #363636;
-  margin-top: 10px;
-  text-align: center;
-}
-
-.terms a {
-  color: #007bff;
-  text-decoration: none;
-}
-
-.terms a:hover {
-  text-decoration: underline;
-}
-
 p {
   font-size: 14px;
   font-weight: bold;
@@ -286,7 +269,9 @@ p {
 /*tos part*/
 .terms {
   font-size: 12px;
-  color: #555;
+  font-weight: normal;
+  font-style: normal;
+  color: #5c5b5b;
   margin-top: 20px;
   text-align: center;
 }
@@ -307,8 +292,9 @@ p {
   border: none;
   color: #007bff;
   font-family: "Roboto", serif;
-  font-weight: bold;
   font-size: 12px;
+  font-weight: normal;
+  font-style: normal;
   cursor: pointer;
 }
 .tos-btn:hover {
@@ -332,22 +318,22 @@ p {
   background: white;
   padding: 60px 40px;
   width: 90%;
-  max-width: 400px;
+  max-width: 500px;
   border-radius: 8px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   position: relative;
   transition: transform 0.3s ease;
 }
-.welcome-content{
+.welcome-content {
   overflow-y: scroll;
   height: 400px;
 }
-.welcome-content::-webkit-scrollbar{
+.welcome-content::-webkit-scrollbar {
   width: 2px;
-  background-color: #08c55d;
-}
-.welcome-content::-webkit-scrollbar-thumb{
   background-color: #000000;
+}
+.welcome-content::-webkit-scrollbar-thumb {
+  background-color: #08c55d;
 }
 .title-tos {
   margin-top: 0;
@@ -373,7 +359,7 @@ p {
   font-weight: 600;
   text-align: left;
 }
-.title-aot{
+.title-aot {
   margin-top: 20px;
   font-family: "Roboto", sans-serif;
   color: #000000;
@@ -389,19 +375,18 @@ p {
   margin: 10px 0;
   text-align: left;
 }
-h4{
-  font-family: "Varela Round", sans-serif;
-  margin-top: 15px;
-  font-size: 12px;
-  color: #000000;
+h4 {
+  font-family: 'Varela Round', sans-serif;
+  margin-top: 20px;
+  font-size: 14px;
+  color: #333;
   text-align: center;
-  
 }
-.button{
+.button {
   display: flex;
-  justify-content: center;
   gap: 20px;
-  margin-top: 40px;
+  justify-content: center;
+  margin-top: 20px;
 }
 .button button {
   width: 150px;
@@ -414,25 +399,25 @@ h4{
   cursor: pointer;
   transition: all 0.3s ease;
 }
-.red {
+.green {
   background-color: #08c55d;
   color: white;
 }
 
-.red:hover {
+.green:hover {
   background-color: #06a74b;
   transform: scale(1.05);
 }
 
-
 .gray {
-  background-color: #bbb;
-  color: white;
+  background-color: #f3f3f3;
+  color: rgb(139, 139, 139);
 }
 
 .gray:hover {
   background-color: #999;
   transform: scale(1.05);
+  color: #242424;
 }
 
 @media (max-width: 600px) {
@@ -448,4 +433,11 @@ h4{
   .title-aot {
     font-size: 16px;
   }
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
 }

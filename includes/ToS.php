@@ -83,7 +83,7 @@
         <br>Notice.
     </h4>
     <div class="button">
-        <button class="red">Accept</button>
-        <button class="gray">Decline</button>
+        <button class="green" id="accept">Accept</button>
+        <button class="gray" id="decline">Decline</button>
     </div>
     </div>

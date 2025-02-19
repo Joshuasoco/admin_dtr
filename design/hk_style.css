@@ -349,3 +349,52 @@ button[type="submit"] {
   border: 1px solid var(--accent);
   color: white;
 }
+.select-container {
+  padding-top: 50px;
+  font-family: 'Roboto', sans-serif;
+  margin: 20px auto;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  padding: 80px 20px;
+  text-align: center;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.select-container img {
+  width: 15%;
+  margin-top: 20px;
+  max-width: 30%;
+  height: auto;
+}
+
+.select-container .notice {
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.select-container p {
+  font-size: 16px;
+  margin-top: 12px;
+  color: #777;
+}
+
+.select-container button {
+  border: none;
+  padding: 12px 20px;
+  margin-top: 150px;
+  background-color: #3498db;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.select-container button:hover {
+  background-color: #2980b9;
+}

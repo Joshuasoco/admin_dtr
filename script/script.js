@@ -13,6 +13,16 @@ function pass() {
 
 const tosmodal = document.getElementById("tos_modal");
 const openbutton = document.getElementById("tos_button");
+const accept = document.getElementById("accept");
+const decline = document.getElementById("decline");
+
+accept.addEventListener("click", ()=>{
+  tosmodal.style.display ="none";
+  alert("accepted Terms of Services");
+});
+decline.addEventListener("click", ()=>{
+  tosmodal.style.display = "none";
+});
 
 openbutton.addEventListener("click", () => {
     tosmodal.style.display = "flex"; // Corrected modal reference
