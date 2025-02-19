@@ -32,6 +32,6 @@ CREATE TABLE hk_student_logs (
 );
 
 INSERT INTO students (id, name, hk_type, course_code, hk_duty_status, rendered_hours, schedule_days)
- VALUES (3, 'joshco', 50, 'bsit', 'Facilitator', 90, 'WEDNESDAY'), (4, 'joshco', 50, 'bsit', 'Facilitator', 90,'MONDAY'), (5, 'pogi', 75, 'BSCS', 'Man Power', 120, 'TUESDAY');
+VALUES (3, 'joshco', 50, 'bsit', 'Facilitator', 90, 'WEDNESDAY'), (4, 'joshco', 50, 'bsit', 'Facilitator', 90,'MONDAY'), (5, 'pogi', 75, 'BSCS', 'Man Power', 120, 'TUESDAY');
 INSERT INTO admin (name, password, role) VALUES 
 ('admin', 'admin123', 'admin');
