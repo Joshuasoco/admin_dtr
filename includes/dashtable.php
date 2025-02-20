@@ -1,4 +1,3 @@
-
 <?php
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
@@ -54,9 +53,8 @@ unset($_SESSION['search_query']);
                         echo "<td>" . $row['hk_duty_status'] . "</td>";
                         echo "<td style='display: flex; align-items: center; gap: 8px; position: relative;'>";
                         echo "<span class='rendered-hours'>" . $row['rendered_hours'] . "</span>";
-                        echo "<button class='hours-button' data-id='" . $row['id'] . "'>
-                              <img src='/ADMIN_DTR/images/pen.svg' alt='edit' class='hours-icon'>
-                              </button>";
+                        echo "<button class='hours-button' data-id='" . $row['id'] . "'>";
+                        
                     echo "</td>";
                     echo "</tr>";
                 }

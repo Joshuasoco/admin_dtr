@@ -1,6 +1,4 @@
 <?php
-    session_start();
-
     if(isset($_SESSION['admin_name']) && isset ($_SESSION['admin_role'])){
         $admin_name = $_SESSION['admin_name'];
         $admin_role = $_SESSION['admin_role'];
@@ -16,8 +14,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="icon" href="/ADMIN_DTR/images/icontitle.png" />
-    <link rel="stylesheet" type = "text/css" href= "/ADMIN_DTR/design/styles.css"/>
+    <link rel="icon" href="/admin_dtr/images/icontitle.png" />
+    <link rel="stylesheet" type = "text/css" href= "/admin_dtr/design/styles.css"/>
     <link
       rel="stylesheet"
       href="https://unpkg.com/boxicons@latest/css/boxicons.min.css"
@@ -25,11 +23,14 @@
 </head>
 <body>
 <div class="wrapper">
+  <button class="burger-menu" id="burger_menu" onclick="toggleSidebar()">
+    <i class="bx bx-menu"></i>
+  </button>
   <div class="sidebar">
     <div class="top">
       <div class="logo">
         <a href="index.php">
-          <img src="/ADMIN_DTR/images/phinmasvg.svg" alt="Upang logo" class="phinmalogo" />
+          <img src="/admin_dtr/images/phinmasvg.svg" alt="Upang logo" class="phinmalogo" />
           <span class="title">HK Duty Tracker</span>
         </a>
       </div>
@@ -59,13 +60,13 @@
     <hr class="line_2" />
     <div class="profilelinks">
       <a href="#">
-        <img src="/ADMIN_DTR/images/profile-minus-1353-svgrepo-com.svg" alt="click to visit profile" class="profilelogo" />
+        <img src="/admin_dtr/images/profile-minus-1353-svgrepo-com.svg" alt="click to visit profile" class="profilelogo" />
         <span class="profile_text">Profile</span>
       </a>
     </div>
     <div class="logout">
-      <a href="#" onclick="show_logout()">
-        <img src="/ADMIN_DTR/images/logout-svgrepo-com.svg" alt="click to logout" class="logoutlogo" />
+    <a href="#" onclick="show_logout(); return false;">
+        <img src="/admin_dtr/images/logout-svgrepo-com.svg" alt="click to logout" class="logoutlogo" />
         <span class="logout_text">Logout</span>
       </a>
     </div>
@@ -78,6 +79,6 @@
         <button class="cancel_button" onclick="hide_logout()">No</button>
       </div>
     </div>
-    <script src="/ADMIN_DTR/script/script.js"></script>
+    <script src="/admin_dtr/script/script.js"></script>
   </body>
 </html>

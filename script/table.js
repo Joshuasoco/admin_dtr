@@ -4,250 +4,166 @@ let lastSearchQuery = "";
 let isDeletePopupOpen = false;
 
 document.addEventListener("DOMContentLoaded", function () {
-  const editButton = document.getElementById("edit_button");
-  const hoursButtons = document.querySelectorAll(".hours-button");
-  allStudentsCheckbox = document.getElementById("all_students_checkbox");
+    const editButton = document.getElementById("edit_button");
+    const hoursButtons = document.querySelectorAll(".hours-button");
+    allStudentsCheckbox = document.getElementById("all_students_checkbox");
 
- 
-  if (allStudentsCheckbox) {
-    allStudentsCheckbox.style.display = "none";
-  }
-  hoursButtons.forEach((button) => {
-    button.style.display = "none";
-  });
+    //Hide elements 
+    if (allStudentsCheckbox) allStudentsCheckbox.style.display = "none";
+    hoursButtons.forEach(button => button.style.display = "none");
 
-  editButton.addEventListener("click", function () {
-    if (!isEditMode) {
-      enterEditMode();
-    } else {
-      const selectedCheckboxes = document.querySelectorAll(".student-checkbox:checked");
-      if (selectedCheckboxes.length > 0) {
-        show_delete_popup();
-      } else {
-        exitEditMode();
-      }
-    }
-  });
-
-  // all students checkbox click
-  allStudentsCheckbox.addEventListener("change", function () {
-    const checkboxes = document.querySelectorAll(".student-checkbox");
-    const rows = document.querySelectorAll("tr");
-
-    checkboxes.forEach((checkbox, index) => {
-      checkbox.checked = allStudentsCheckbox.checked;
-
-      if (rows[index + 1]) {
-        // skip the header row (index 0)
-        if (allStudentsCheckbox.checked) {
-          rows[index + 1].classList.add("checked");
+    //edit mode button click
+    editButton.addEventListener("click", function () {
+        if (!isEditMode) {
+            enterEditMode();
         } else {
-          rows[index + 1].classList.remove("checked");
+            const selectedCheckboxes = document.querySelectorAll(".student-checkbox:checked");
+            selectedCheckboxes.length > 0 ? show_delete_popup() : exitEditMode();
         }
-      }
     });
-  });
 
-  // individual checkbox behavior
-  const individualCheckboxes = document.querySelectorAll(".student-checkbox");
-  individualCheckboxes.forEach((checkbox) => {
-    checkbox.addEventListener("change", function () {
-      const row = this.closest("tr");
-      if (this.checked) {
-        row.classList.add("checked");
-      } else {
-        row.classList.remove("checked");
+    //handle All students checkbox click
+    allStudentsCheckbox.addEventListener("change", function () {
+        const checkboxes = document.querySelectorAll(".student-checkbox");
+        const rows = document.querySelectorAll("tr");
 
-        allStudentsCheckbox.checked = false;
-      }
-      // check all the td when the all student checkbox is clicked
-      const checkedBoxes = document.querySelectorAll(
-        ".student-checkbox:checked"
-      );
-      allStudentsCheckbox.checked =
-        checkedBoxes.length === individualCheckboxes.length;
+        checkboxes.forEach((checkbox, index) => {
+            checkbox.checked = allStudentsCheckbox.checked;
+            if (rows[index + 1]) {
+                allStudentsCheckbox.checked ? rows[index + 1].classList.add("checked") : rows[index + 1].classList.remove("checked");
+            }
+        });
     });
-  });
 
-  // Update search handler to maintain edit mode state
-  document
-    .getElementById("search_input")
-    .addEventListener("input", function () {
-      const searchQuery = this.value;
-      fetch("/ADMIN_DTR/backend/search.php", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body: `searchQuery=${encodeURIComponent(searchQuery)}`,
-      });
+    //handle individual checkbox changes
+    document.querySelectorAll(".student-checkbox").forEach(checkbox => {
+        checkbox.addEventListener("change", function () {
+            const row = this.closest("tr");
+            this.checked ? row.classList.add("checked") : row.classList.remove("checked");
 
-      if (this.searchTimeout) {
-        clearTimeout(this.searchTimeout);
-      }
+            allStudentsCheckbox.checked = document.querySelectorAll(".student-checkbox:checked").length === document.querySelectorAll(".student-checkbox").length;
+        });
+    });
 
-      this.searchTimeout = setTimeout(() => {
-        lastSearchQuery = searchQuery;
+    //search input handling
+    document.getElementById("search_input").addEventListener("input", function () {
+        const searchQuery = this.value;
+        if (this.searchTimeout) clearTimeout(this.searchTimeout);
 
-        fetch("/ADMIN_DTR/backend/search.php", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-          },
-          body: `searchQuery=${encodeURIComponent(searchQuery)}`,
-        })
-          .then((response) => response.text())
-          .then((data) => {
-            document.getElementById("tbody").innerHTML = data;
-
-            if (searchQuery.trim() === "") {
-              fetch("/ADMIN_DTR/includes/reset.php");
-            }
-            if (isEditMode) {
-              const checkboxes = document.querySelectorAll(".student-checkbox");
-              const hoursButtons = document.querySelectorAll(".hours-button");
-
-              checkboxes.forEach(
-                (checkbox) => (checkbox.style.display = "inline-block")
-              );
-              hoursButtons.forEach(
-                (button) => (button.style.display = "block")
-              );
-              if (allStudentsCheckbox)
-                allStudentsCheckbox.style.display = "inline-block";
-            }
-          })
-          .catch((error) => console.error("Error:", error));
-      }, 300); //delay
+        this.searchTimeout = setTimeout(() => {
+            lastSearchQuery = searchQuery;
+            fetch("/admin_dtr/backend/search.php", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: `searchQuery=${encodeURIComponent(searchQuery)}`
+            })
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("tbody").innerHTML = data;
+                if (!searchQuery.trim()) fetch("/admin_dtr/includes/reset.php");
+                if (isEditMode) maintainEditModeState();
+            })
+            .catch(error => console.error("Error:", error));
+        }, 300);
     });
 });
 
-
-
-//realtime update
+//fetch real-time data periodically
 function fetchRealTimeData() {
-
-  if (!lastSearchQuery && !isDeletePopupOpen && !isEditMode) {
-    fetch("/ADMIN_DTR/backend/fetch_real_time.php")
-      .then((response) => response.text())
-      .then((data) => {
-        document.getElementById("tbody").innerHTML = data;
-      })
-      .catch((error) => console.error("Error data", error));
-  }
+    if (!lastSearchQuery && !isDeletePopupOpen && !isEditMode) {
+        fetch("/admin_dtr/backend/fetch_real_time.php")
+        .then(response => response.text())
+        .then(data => document.getElementById("tbody").innerHTML = data)
+        .catch(error => console.error("Error fetching data", error));
+    }
 }
-
 setInterval(fetchRealTimeData, 3000);
 fetchRealTimeData();
 
-
+//delete popup functions
 function show_delete_popup() {
-  isDeletePopupOpen = true; 
-  document.getElementById("delete_warning").style.display = "block";
+    isDeletePopupOpen = true;
+    document.getElementById("delete_warning").style.display = "block";
 }
-
 function hide_delete_popup() {
-  isDeletePopupOpen = false; 
-  document.getElementById("delete_warning").style.display = "none";
-  if (this.event && !this.event.target.classList.contains("delete_button")) {
-    if (isEditMode) {
-      const checkboxes = document.querySelectorAll(".student-checkbox");
-      const hoursButtons = document.querySelectorAll(".hours-button");
-
-      checkboxes.forEach(checkbox => checkbox.style.display = "inline-block");
-      hoursButtons.forEach(button => button.style.display = "block");
-      if (allStudentsCheckbox) {
-        allStudentsCheckbox.style.display = "inline-block";
-      }
-    }
-  }
+    isDeletePopupOpen = false;
+    document.getElementById("delete_warning").style.display = "none";
+    if (isEditMode) maintainEditModeState();
 }
 
+//edit mode functions
 function enterEditMode() {
-  isEditMode = true;
-  const editButton = document.getElementById("edit_button");
-  const checkboxes = document.querySelectorAll(".student-checkbox");
-  const hoursButtons = document.querySelectorAll(".hours-button");
-
-  editButton.innerHTML = '&nbsp;&nbsp;&nbsp;<i class="bx bx-trash"></i>&nbsp;&nbsp;&nbsp;';
-  editButton.classList.add("delete-mode");
-  editButton.style.backgroundColor = "#E72E2E";
-  editButton.style.color = "white";
-
-  checkboxes.forEach(checkbox => checkbox.style.display = "inline-block");
-  hoursButtons.forEach(button => button.style.display = "block");
-  if (allStudentsCheckbox) allStudentsCheckbox.style.display = "inline-block";
+    isEditMode = true;
+    document.getElementById("edit_button").innerHTML = '&nbsp;&nbsp;&nbsp;<i class="bx bx-trash"></i>&nbsp;&nbsp;&nbsp;';
+    document.getElementById("edit_button").classList.add("delete-mode");
+    document.getElementById("edit_button").style.backgroundColor = "#E72E2E";
+    document.getElementById("edit_button").style.color = "white";
+    maintainEditModeState();
 }
 
 function exitEditMode() {
-  isEditMode = false;
-  const editButton = document.getElementById("edit_button");
-  const checkboxes = document.querySelectorAll(".student-checkbox");
-  const hoursButtons = document.querySelectorAll(".hours-button");
-
-  editButton.innerHTML = '<i class="bx bxs-pencil"></i> Edit';
-  editButton.classList.remove("delete-mode");
-  editButton.style.backgroundColor = "";
-  editButton.style.color = "";
-
-  checkboxes.forEach(checkbox => {
-    checkbox.style.display = "none";
-    checkbox.checked = false;
-  });
-  hoursButtons.forEach(button => button.style.display = "none");
-  if (allStudentsCheckbox) {
-    allStudentsCheckbox.style.display = "none";
-    allStudentsCheckbox.checked = false;
-  }
-
-  document.querySelectorAll("tr.checked").forEach(row => row.classList.remove("checked"));
+    isEditMode = false;
+    document.getElementById("edit_button").innerHTML = '<i class="bx bxs-pencil"></i> Edit';
+    document.getElementById("edit_button").classList.remove("delete-mode");
+    document.getElementById("edit_button").style.backgroundColor = "";
+    document.getElementById("edit_button").style.color = "";
+    document.querySelectorAll(".student-checkbox, .hours-button").forEach(el => el.style.display = "none");
+    if (allStudentsCheckbox) {
+        allStudentsCheckbox.style.display = "none";
+        allStudentsCheckbox.checked = false;
+    }
+    document.querySelectorAll("tr.checked").forEach(row => row.classList.remove("checked"));
 }
 
+function maintainEditModeState() {
+    document.querySelectorAll(".student-checkbox, .hours-button").forEach(el => el.style.display = "inline-block");
+    if (allStudentsCheckbox) allStudentsCheckbox.style.display = "inline-block";
+}
+
+//delete selected students
 function delete_selected() {
-  const selectedCheckboxes = document.querySelectorAll(
-    ".student-checkbox:checked"
-  );
+    const selectedCheckboxes = document.querySelectorAll(".student-checkbox:checked");
+    if (selectedCheckboxes.length === 0) return alert("No student selected for deletion.");
 
-  if (selectedCheckboxes.length === 0) {
-    alert("No student selected for deletion.");
-    return;
-  }
-
-  // Always hide the popup when deletion is confirmed
-  hide_delete_popup();
-
-  // Gather selected student IDs
-  const studentIds = Array.from(selectedCheckboxes).map(
-    (checkbox) => checkbox.dataset.id
-  );
-
-  // send delete request via AJAX
-  fetch("/ADMIN_DTR/backend/delete.php", {
-    method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: `ids=${encodeURIComponent(JSON.stringify(studentIds))}`,
-  })
-    .then((response) => response.text())
-    .then((data) => {
-      if (data.trim() === "success") {
-        
-        selectedCheckboxes.forEach((checkbox) =>
-          checkbox.closest("tr").remove()
-        );
-        alert("Selected students deleted successfully!");
-      } else {
-        alert("Error deleting students. Please try again.");
-      }
+    hide_delete_popup();
+    const studentIds = Array.from(selectedCheckboxes).map(checkbox => checkbox.dataset.id);
+    fetch("/admin_dtr/backend/delete.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: `ids=${encodeURIComponent(JSON.stringify(studentIds))}`
     })
-    .catch((error) => {
-      console.error("Error:", error);
-      alert("An error occurred while deleting students.");
+    .then(response => response.text())
+    .then(data => {
+        if (data.trim() === "success") {
+            selectedCheckboxes.forEach(checkbox => checkbox.closest("tr").remove());
+            alert("Selected students deleted successfully!");
+            exitEditMode();
+        } else {
+            console.error("Response:", data);
+            alert(`Error: ${data}`);
+        }
+    })
+    .catch(error => {
+        console.error("Error deleting students", error);
+        alert("An error occurred while deleting students.");
     });
 }
+
+//student hours button click
 document.getElementById("tbody").addEventListener("click", function (e) {
-  const button = e.target.closest(".hours-button");
-  if (button) {
-    const studentId = button.dataset.id;
-    window.location.href = `hk.php?id=${studentId}`;
-  }
+    const button = e.target.closest(".hours-button");
+    if (button) {
+        const studentId = button.dataset.id;
+        fetch(`/admin_dtr/backend/getting_student.php?id=${studentId}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                sessionStorage.setItem("studentData", JSON.stringify(data.student));
+                window.location.href = `hk.php?id=${studentId}`;
+            } else {
+                console.error("Error fetching student data:", data.error);
+            }
+        })
+        .catch(error => console.error("Error:", error));
+    }
 });

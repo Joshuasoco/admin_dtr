@@ -6,8 +6,8 @@
                 <th>TIME IN</th>
                 <th>TIME OUT</th>
                 <th>REMARKS</th>
-                <th>NO. OF HOURS</th> <!-- New Column -->
-                <th class="approval-header">APPROVAL</th> <!-- Fixed Approval Header -->
+                <th>NO. OF HOURS</th> 
+                <th class="approval-header">APPROVAL</th>
                 <th>ACTION</th>
             </tr>
         </thead>
@@ -20,7 +20,7 @@
                 <td>9 hours</td> 
                 <td class="student-status">&nbsp;Pending</td>
                 <td>
-                    <img src="/ADMIN_DTR/images/threedots.svg" alt="menu" class="three-dot">
+                    <img src="/admin_dtr/images/threedots.svg" alt="menu" class="three-dot">
                 </td>
             </tr>
             <tr>
@@ -31,7 +31,7 @@
                 <td>9 hours</td> 
                 <td class="student-status approve">Approve</td>
                 <td>
-                    <img src="/ADMIN_DTR/images/threedots.svg" alt="menu" class="three-dot">
+                    <img src="/admin_dtr/images/threedots.svg" alt="menu" class="three-dot">
                 </td>
             </tr>
             <tr>
@@ -42,7 +42,7 @@
                 <td>9 hours</td> 
                 <td class="student-status decline">&nbsp;Decline&nbsp;</td>
                 <td>
-                    <img src="/ADMIN_DTR/images/threedots.svg" alt="menu" class="three-dot">
+                    <img src="/admin_dtr/images/threedots.svg" alt="menu" class="three-dot">
                 </td>
             </tr>
         </tbody>

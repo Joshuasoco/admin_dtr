@@ -3,8 +3,16 @@
   padding: 0;
   box-sizing: border-box;
 }
+/*color*/
+:root {
+  --primary: #2c3e50;
+  --secondary: #7f8c8d;
+  --accent: #3498db;
+  --light: #f8f9fa;
+  --border: #ecf0f1;
+}
 .main {
-  margin-left: 260px;
+  margin-left: 235px;
   padding: 20px;
 }
 .title_hk {
@@ -24,7 +32,7 @@
 }
 .student_id_wrapper {
   display: flex;
-  gap: 46px;
+  gap: 53px;
   flex-wrap: wrap;
 }
 
@@ -84,18 +92,36 @@
 }
 
 .student-id-label {
+  letter-spacing: 1px;
   font-family: "Poppins", sans-serif;
-  font-weight: 500;
+  font-weight: bold;
   color: rgba(0, 0, 0, 0.59);
   font-size: 12px;
   align-self: flex-start;
 }
 
-.student-id-number {
+.student-id-number,.student-name
+{
+  text-transform: capitalize;
   text-wrap: nowrap;
+  font-family: "Roboto", sans-serif;
   color: #000;
   font-size: 16px;
   margin-top: 5px;
+}
+.student-course{
+  text-transform: uppercase;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  margin-top: 5px;
+  color: #000;
+}
+.student-schedule{
+  text-transform: uppercase;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  margin-top: 5px;
+  color: #000;
 }
 /* table container */
 .table_container {
@@ -186,7 +212,7 @@ th {
   font-family: "Roboto", serif;
   font-weight: 600;
   text-align: left;
-  padding: 12px 16px; /* Ensure sufficient padding for alignment */
+  padding: 12px 16px;
 }
 td {
   position: relative;
@@ -198,13 +224,14 @@ td {
   font-weight: normal;
   color: rgba(0, 0, 0, 1);
 }
+/* approval status*/
 .approval-header {
   margin-left: 60px;
   text-align: center;
   vertical-align: middle;
   white-space: normal;
   min-width: 120px;
-  word-break: break-word; /* Ensure long words break properly */
+  word-break: break-word; 
 }
 .three-dot {
   position: absolute;
@@ -216,6 +243,7 @@ td {
   height: auto;
 }
 .student-status {
+  text-transform: uppercase;
   background-color: #fff3cd;
   text-align: center;
   padding: 0.25rem 0.75rem;
@@ -263,7 +291,7 @@ td {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(43, 46, 49, 0.9);
   justify-content: center;
   align-items: center;
   z-index: 1000;
@@ -271,15 +299,104 @@ td {
 
 .form-content {
   background: white;
-  padding: 20px;
+  padding: 2rem;
   border-radius: 8px;
-  width: 400px;
-  position: relative;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.buttons {
-  margin-top: 15px;
-  display: flex;
-  gap: 10px;
-  justify-content: flex-end;
+.form-content h3 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+form#timeForm label {
+  display: block;
+  font-family: 'Roboto', sans-serif;
+  color: var(--secondary);
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+form#timeForm input {
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 1.2rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.9rem;
+}
+
+.buttons button {
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+button[type="button"] {
+  background: transparent;
+  border: 1px solid var(--secondary);
+  color: var(--secondary);
+}
+
+button[type="submit"] {
+  background: var(--accent);
+  border: 1px solid var(--accent);
+  color: white;
+}
+.select-container {
+  padding-top: 50px;
+  font-family: 'Roboto', sans-serif;
+  margin: 20px auto;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  padding: 80px 20px;
+  text-align: center;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.select-container img {
+  width: 15%;
+  margin-top: 20px;
+  max-width: 30%;
+  height: auto;
+}
+
+.select-container .notice {
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.select-container p {
+  font-size: 16px;
+  margin-top: 12px;
+  color: #777;
+}
+
+.select-container button {
+  border: none;
+  padding: 12px 20px;
+  margin-top: 150px;
+  background-color: #3498db;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.select-container button:hover {
+  background-color: #2980b9;
 }
