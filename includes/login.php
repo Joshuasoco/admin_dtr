@@ -37,8 +37,8 @@ unset($_SESSION['login_error']);
                 <?php endif; ?>
 
                 <label for="student_id">Email</label>
-                <div class="password">
-                    <input type="text" name="student_id" id="student_id" placeholder="03-2324-1234" required>
+                <div class="email">
+                    <input type="text" name="student_id" id="student_id" placeholder="Enter Admin" required>
                     <img src="../images/email-svgrepo-com.svg" alt="email" class="email-icon">
                 </div>
                 <label for="password">Password</label>
@@ -52,8 +52,7 @@ unset($_SESSION['login_error']);
                 <button type="submit" class="btn">Sign in</button>
             </form>
             
-            <div class="divider">Or</div>
-            <a href="#" class="signup-btn">Sign up</a>
+            <div class="divider"></div>
             
             <p class="terms">
                 By clicking continue, you agree to our 

@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['logged_in']) || !$_SESSION['logged_in']) {
+if (!isset($_SESSION['logged_in']) || !$_SESSION['logged_in']){
     header("Location: /ADMIN_DTR/includes/login.php");
     exit(); 
 }
@@ -21,9 +21,9 @@ if ($student_id) {
     $stmt->execute();
     $result = $stmt->get_result();
 
-    if ($result->num_rows === 1) {
+    if ($result->num_rows === 1){
         $student_data = $result->fetch_assoc(); 
-    } else {
+    } else{
         header("Location: /ADMIN_DTR/dashboard.php");
         exit;
     }
@@ -128,8 +128,8 @@ if ($student_id) {
                     <div class="notice">Select a student..</div>
                     <p>No student selected yet.</p>
                     <button type="button" onclick="window.location.href
-                    ='dashboard.php'">
-                        Go to Dashboard
+                    ='student_list.php'">
+                        Go to student list
                     </button>
                 </div>
             <?php endif;?>

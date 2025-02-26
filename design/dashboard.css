@@ -1,0 +1,244 @@
+/* Reset default margin, padding, and set box-sizing */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+/* Main wrapper */
+.wrapper {
+  display: flex;
+  min-height: 100vh;
+}
+
+.main-content {
+  margin-left: 250px; 
+  padding: 20px;
+  width: calc(100% - 250px); /* Ensures content does not shrink */
+  overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* Dashboard title styling */
+.title-dashboard {
+  margin-top: 10px;
+  font-size: 28px;
+  font-style: normal;
+}
+
+.subtitle-db {
+  margin-top: 10px;
+  font-size: 20px;
+  font-style: normal;
+  color: #777777;
+  font-weight: normal;
+}
+
+/* Content layout */
+.content {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Chart and student container */
+.chart-student-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 35px;
+  width: 100%;
+}
+
+.title-bar {
+  color: #777777;
+  display: block;
+  margin-bottom: 8px;
+  font-size: 12px;
+  font-weight: normal;
+}
+
+/* Chart sections */
+.chart-section {
+  flex: 1 1 calc(50% - 35px);
+  min-width: 300px;
+}
+
+/* Containers for charts and student info */
+.chart-container,
+.student-handler {
+  width: 100%;
+  height: 40vh;
+  background: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.student-handler {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 40vh;
+  background: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 30px;
+  text-align: center;
+}
+
+.student-handler img {
+  max-width: 50%;
+  height: auto;
+  width: 300px;
+  margin-bottom: 20px;
+}
+
+.student-handler p {
+  margin: 5px 0;
+  font-family: "Varela Round", sans-serif;
+  font-weight: 500;
+  color: #202020;
+  letter-spacing: 0.1em;
+  font-size: 18px;
+}
+
+.student-handler p:nth-child(3) {
+  margin-bottom: 50px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #007bff;
+}
+
+/* Table styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+table th,
+table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+table th {
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+}
+
+/* Status colors */
+.approval-pending {
+  color: #ffc107;
+  font-weight: bold;
+}
+.approval-approved {
+  color: #28a745;
+  font-weight: bold;
+}
+.approval-rejected {
+  color: #dc3545;
+  font-weight: bold;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+
+
+  /* Main content adjustments */
+  .main-content {
+    margin-left: 0;
+    width: 100%;
+    padding: 1rem;
+  }
+
+  /* Chart container adjustments */
+  .chart-student-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .chart-section {
+    flex: 1 1 100%;
+    min-width: 100%;
+  }
+
+  .chart-container,
+  .student-handler {
+    height: auto;
+    min-height: 300px;
+  }
+
+  /* Table responsiveness */
+  table thead {
+    display: none;
+  }
+
+  table tbody tr {
+    display: block;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #fff;
+  }
+
+  table tbody td {
+    display: block;
+    text-align: right;
+    padding: 10px 15px;
+    position: relative;
+    border-bottom: 1px solid #eee;
+  }
+
+  table tbody td::before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    color: #666;
+  }
+
+  table tbody tr td:last-child {
+    border-bottom: none;
+  }
+
+  /* Typography adjustments */
+  .title-dashboard {
+    font-size: 24px;
+  }
+
+  .subtitle-db {
+    font-size: 18px;
+  }
+}
+
+/* Additional mobile optimizations */
+@media (max-width: 480px) {
+  .main-content {
+    padding: 0.5rem;
+  }
+
+  .chart-student-container {
+    gap: 15px;
+  }
+
+  .chart-container,
+  .student-handler {
+    padding: 15px;
+  }
+
+  .title-dashboard {
+    font-size: 20px;
+  }
+
+  .subtitle-db {
+    font-size: 16px;
+  }
+}

@@ -15,6 +15,5 @@
 <body>
     <?php include 'includes/sidebar.php'; ?>
     
-    
 </body>
 </html>

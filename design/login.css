@@ -65,11 +65,11 @@ body {
 }
 
 .right {
-  flex: 1; 
+  flex: 1;
   padding: 50px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   padding-top: 40px;
 }
 h2 {
@@ -83,8 +83,10 @@ h2 {
 form {
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
 }
 form label {
+  padding-top: 20px;
   font-family: "Roboto", serif;
   font-size: 16px;
   color: #000000;
@@ -95,15 +97,47 @@ form label {
   position: relative;
 }
 form input:focus {
-  border-color: #007bff; 
-  background-color: #f0f7ff; 
+  border-color: #007bff;
+  background-color: #f0f7ff;
   outline: none;
+}
+.email {
+  width: 100%;
+  height: 45px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding-right: 40px;
+}
+
+.email input {
+  border: none;
+  flex: 1;
+  padding: 10px;
+  height: 100%;
+  background: transparent;
+}
+
+.email img {
+  position: absolute;
+  right: 12px;
+  width: 20px;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.email img:hover {
+  opacity: 1;
 }
 
 input,
 .password {
   width: 100%;
-  height: 45px; 
+  height: 45px;
   border: 1px solid #ccc;
   border-radius: 5px;
   padding: 10px;
@@ -117,6 +151,7 @@ input::placeholder {
 }
 
 .password:focus-within,
+.email:focus-within,
 input:focus {
   border-color: #26abf8;
   background-color: #f0f7ff;
@@ -124,7 +159,7 @@ input:focus {
 }
 
 .password {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   display: flex;
   align-items: center;
   position: relative;
@@ -134,7 +169,7 @@ input:focus {
   border: none;
   flex: 1;
   padding: 0;
-  height: 100%; 
+  height: 100%;
   background: transparent;
 }
 
@@ -150,14 +185,6 @@ input:focus {
 .pass-icon:hover {
   opacity: 1;
 }
-.email-icon {
-  position: absolute;
-  right: 12px;
-  width: 20px;
-  opacity: 0.6;
-  transition: opacity 0.3s ease;
-}
-
 a {
   font-size: 14px;
   color: #007bff;
@@ -178,7 +205,7 @@ a:hover {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  margin-top: 10px;
+  margin-top: 15px;
 }
 
 .btn:hover {
@@ -191,48 +218,15 @@ a:hover {
   display: flex;
   align-items: center;
   text-align: center;
-  margin: 20px 0;
-}
-
-.divider::before,
-.divider::after {
-  content: "";
-  flex: 1;
+  margin-top: 20px;
+  margin-bottom: 5px;
   border-bottom: 1px solid #ccc;
-}
-
-.divider::before {
-  margin-right: 10px;
-}
-
-.divider::after {
-  margin-left: 10px;
-}
-
-.signup-btn {
-  display: inline-block;
-  text-align: center;
-  background: none;
-  border: 1px solid #007bff;
-  color: #007bff;
-  padding: 10px 16px;
-  font-size: 16px;
-  border-radius: 5px;
-  cursor: pointer;
-  text-decoration: none;
-  transition: background-color 0.3s ease, border-color 0.3s ease;
-}
-
-.signup-btn:hover {
-  text-decoration: none;
-  background-color: #e6f7ff;
 }
 p {
   font-size: 14px;
   font-weight: bold;
-  margin-top: 2px;
   color: rgba(0, 0, 0, 0.4);
-  margin-bottom: 40px;
+  margin-bottom: 20px; /* Reduced from 40px */
   text-align: center;
 }
 /*error style*/
@@ -241,7 +235,7 @@ p {
   color: #721c24;
   border: 1px solid #f5c6cb;
   padding: 6px;
-  margin: 0 0 20px 0;
+  margin: 5px 0 10px 0;
   border-radius: 5px;
   font-size: 1em;
   display: flex;
@@ -273,7 +267,7 @@ p {
   font-weight: normal;
   font-style: normal;
   color: #5c5b5b;
-  margin-top: 20px;
+  margin-top: 60px;
   text-align: center;
 }
 
@@ -377,7 +371,7 @@ p {
   text-align: left;
 }
 h4 {
-  font-family: 'Varela Round', sans-serif;
+  font-family: "Varela Round", sans-serif;
   margin-top: 20px;
   font-size: 14px;
   color: #333;

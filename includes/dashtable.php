@@ -1,22 +1,12 @@
 <?php
+include __DIR__ . '/../backend/connection.php';  
+
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 unset($_SESSION['search_active']);
 unset($_SESSION['search_query']);
 
-    $host = 'localhost';
-    $root = 'root';
-    $password = '';
-    $db = 'admin_data';
-
-    $conn = mysqli_connect($host, $root, $password, $db);
-
-    
-    //check connection
-    if($conn->connect_error){
-        die("Connection failed: " . $conn->connect_error);
-    }
     function generateNoResultsHtml() {
         return "<tr><td colspan='6' style='text-align:center;'>No records found</td></tr>";
     }

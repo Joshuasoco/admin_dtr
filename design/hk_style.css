@@ -32,7 +32,7 @@
 }
 .student_id_wrapper {
   display: flex;
-  gap: 53px;
+  gap: 48px;
   flex-wrap: wrap;
 }
 
